@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<a
-  href="https://fleeappclena12348.github.io/Video-Catcher-P-/"
-  target="_blank"
-  rel="noopener noreferrer"
-  style="color:#3ea6ff;font-size:13px;"
->
-  プライバシーポリシー
-</a>
-<a
-  href="https://forms.gle/mb1jERW9gs6q52sj6"
-  target="_blank"
-  rel="noopener noreferrer"
-  style="color:#3ea6ff;font-size:13px;"
->
-  　投稿フォーム
-</a>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -107,6 +91,213 @@ header p {
 /* コメント一覧 */
 .comment-list {
   margin-top: 12px;
+}
+.comment-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #333;
+}
+.comment-name {
+  font-size: 13px;
+  font-weight: bold;
+}
+.comment-text {
+  font-size: 14px;
+  margin: 4px 0;
+}
+.comment-time {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.list {
+  flex: 1;
+}
+.video-item {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+}
+.video-item:hover {
+  background: #2a2a2a;
+}
+.video-item img {
+  width: 120px;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.video-text {
+  font-size: 14px;
+}
+.video-text small {
+  color: #aaa;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <h1>Video Catcher
+    <p>クレゲ動画配信サービス</p>
+  </div>
+  <input class="search" id="search" type="text" placeholder="🔍 タイトルで検索" oninput="filterVideos()">
+</header>
+
+<div class="container">
+  <div class="player">
+    <iframe id="player"
+      src="https://drive.google.com/file/d/1kfEKIAckgGHEPJA5pEJvDeRqUvZ3jzQo/preview"
+      allow="autoplay"></iframe>
+
+    <div class="video-title" id="title">フック設定で乱獲してみた</div>
+    <div class="video-meta" id="meta">再生数 0回・2025/12/14</div>
+
+    <!-- コメント欄 -->
+    <div class="comment-box">
+      <h3>💬 コメント</h3>
+      <input id="commentName" placeholder="名前（省略可）">
+      <textarea id="commentText" placeholder="コメントを書く"></textarea>
+      <button onclick="sendComment()">送信</button>
+
+      <div class="comment-list" id="commentList"></div>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="video-item"
+      data-title="フック設定で乱獲してみた"
+      onclick="playVideo('1kfEKIAckgGHEPJA5pEJvDeRqUvZ3jzQo','フック設定で乱獲してみた','1,234回','2025/01/01')">
+      <img src="https://drive.google.com/thumbnail?id=1kfEKIAckgGHEPJA5pEJvDeRqUvZ3jzQo&sz=w320">
+      <div class="video-text">
+        フック設定で乱獲してみた<br>
+        <small>0回・2025/12/14</small>
+      </div>
+    </div>
+
+    <div class="video-item"
+      data-title="ディスプレイのラブブ狙ってみた"
+      onclick="playVideo('1JUB5_16YeySP0Vyuq2zedMVWvxC0Iezx','ディスプレイのラブブ狙ってみた','0回','2025/12/14')">
+      <img src="https://drive.google.com/thumbnail?id=1JUB5_16YeySP0Vyuq2zedMVWvxC0Iezx&sz=w320">
+      <div class="video-text">
+        ディスプレイのラブブ狙ってみた<br>
+        <small>0回・2025/12/14</small>
+      </div>
+    </div>
+
+    <div class="video-item"
+      data-title="ポケカ600円チャレンジ"
+      onclick="playVideo('1yDTLdIUIbulAvc4-iwFMJ4wip2BLw1Vh','ポケカ600円チャレンジ','0回','2025/12/14')">
+      <img src="https://drive.google.com/thumbnail?id=1yDTLdIUIbulAvc4-iwFMJ4wip2BLw1Vh&sz=w320">
+      <div class="video-text">
+        ポケカ600円チャレンジ<br>
+        <small>0回・2025/12/14</small>
+      </div>
+    </div>
+
+    <div class="video-item"
+      data-title="フック設定やってみた1"
+      onclick="playVideo('1J_w3Xg28cgq2zz3PikJCJbREQQIcQ7qX','フック設定やってみた1','0回','2025/12/14')">
+      <img src="https://drive.google.com/thumbnail?id=1J_w3Xg28cgq2zz3PikJCJbREQQIcQ7qX&sz=w320">
+      <div class="video-text">
+        フック設定やってみた1<br>
+        <small>0回・2025/12/14</small>
+      </div>
+    </div>
+
+    <div class="video-item"
+      data-title="アーム800円チャレンジ"
+      onclick="playVideo('1p7l1CEeJvu4DUHxCEVkQxbMN8dlTx-GU','アーム800円チャレンジ','0回','2025/12/14')">
+      <img src="https://drive.google.com/thumbnail?id=1p7l1CEeJvu4DUHxCEVkQxbMN8dlTx-GU&sz=w320">
+      <div class="video-text">
+        アーム800円チャレンジ<br>
+        <small>0回・2025/12/14</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const GAS_URL =
+"https://script.google.com/macros/s/AKfycbzO_YTG6qoA-nR3MqtkQYSJOVLYZYC7BWYey1JkbMyv3fLg-poickWwrMeYPT3PuAwW-A/exec";
+
+function getVideoId() {
+  return document.getElementById("player").src.split("/d/")[1].split("/")[0];
+}
+
+function playVideo(id, title, views, date) {
+  document.getElementById("player").src =
+    `https://drive.google.com/file/d/${id}/preview`;
+  document.getElementById("title").textContent = title;
+  document.getElementById("meta").textContent =
+    `再生数 ${views}・${date}`;
+  loadComments();
+}
+
+function sendComment() {
+  const nameInput = document.getElementById("commentName");
+  const commentInput = document.getElementById("commentText");
+
+  const name = nameInput.value || "匿名";
+  const comment = commentInput.value;
+  if (!comment) return;
+
+  commentInput.value = "";
+
+  fetch(GAS_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      videoId: getVideoId(),
+      name: name,
+      comment: comment
+    })
+  })
+  .then(() => loadComments())
+  .catch(() => console.error("送信失敗"));
+}
+
+function loadComments() {
+  fetch(`${GAS_URL}?videoId=${getVideoId()}`)
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById("commentList");
+      list.innerHTML = "";
+      data.forEach(c => {
+        list.innerHTML += `
+          <div class="comment-item">
+            <div class="comment-name">${c.name}</div>
+            <div class="comment-text">${c.comment}</div>
+            <div class="comment-time">${c.time}</div>
+          </div>
+        `;
+      });
+    });
+}
+
+// タイトル検索機能
+const videoItems = document.querySelectorAll('.video-item');
+function filterVideos() {
+  const query = document.getElementById('search').value.toLowerCase();
+  videoItems.forEach(item => {
+    const title = item.dataset.title.toLowerCase();
+    item.style.display = title.includes(query) ? 'flex' : 'none';
+  });
+}
+
+loadComments();
+</script>
+
+</body>
+</html>  margin-top: 12px;
 }
 .comment-item {
   padding: 8px 0;
